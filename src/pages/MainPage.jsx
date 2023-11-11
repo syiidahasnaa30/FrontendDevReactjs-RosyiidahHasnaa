@@ -8,7 +8,6 @@ const MainPage = () => {
     React.useEffect(() => {
         const getData = async () => {
             const { data } = await getRestaurants()
-            console.log(data)
             setRestaurants(data)
         }
         getData()
@@ -17,8 +16,8 @@ const MainPage = () => {
         <header>
             <h1>Restaurants</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti ipsum officiis porro praesentium voluptatem, at vero! Culpa exercitationem iure, quisquam expedita esse id delectus blanditiis praesentium eaque deserunt porro! Aut, qui ipsa!</p>
-            <Navbar />
         </header>
+        <Navbar />
         <main className="main-content">
             <RestaurantList restaurants={restaurants} />
             <div className="main-content__action">

@@ -1,11 +1,14 @@
+import RestaurantApp from './RestaurantApp'
 import './styles/style.css'
-import MainPage from './pages/MainPage'
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
 
   return (
     <>
-      <MainPage />
+      <BrowserRouter>
+        <RestaurantApp />
+      </BrowserRouter>
     </>
   )
 }

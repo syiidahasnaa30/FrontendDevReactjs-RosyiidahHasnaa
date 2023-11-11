@@ -1,8 +1,8 @@
 import { Rating } from "@mui/material";
 import { GoDotFill } from "react-icons/go"
-import React from "react";
+import { Link } from "react-router-dom";
 
-const RestaurantItem = ({ name, image, rate, category, open, price }) => {
+const RestaurantItem = ({ id, name, image, rate, category, open, price }) => {
 
     return <>
         <div className="restaurant-item">
@@ -16,7 +16,9 @@ const RestaurantItem = ({ name, image, rate, category, open, price }) => {
                     <p className="restaurant-item__open"><GoDotFill color={open ? 'teal' : 'red'} />{open ? 'OPEN' : 'CLOSE'}</p>
                 </div>
             </div>
-            <button>LEARN MORE</button>
+            <Link to={`/restaurant/${id}`}>
+                <button>LEARN MORE</button>
+            </Link>
         </div></>
 }
 export default RestaurantItem

@@ -10,23 +10,23 @@ const getRestaurants = async () => {
     return { error: false, data: responseJson }
 }
 const getDetailRestaurant = async (id) => {
-    const response = await fetch(BASE_URL | "/detail/" + id)
-    const responseJson = response.json();
+    const response = await fetch(BASE_URL + "/restaurants/" + id)
+    const responseJson = await response.json();
 
-    if (responseJson.error) {
-        return { error: responseJson.message, data: null }
+    if (responseJson === null) {
+        return { error: true, data: null }
     }
-    return { error: false, data: responseJson.restaurants }
+    return { error: false, data: responseJson }
 }
-const getSmallImageRestaurant = async (id) => {
-    const response = await fetch(BASE_URL + "/images/small/" + id);
-    const responseJson = response.json();
+const getRestaurantReview = async (id) => {
+    const response = await fetch(BASE_URL + "/restaurants/" + id + "/reviews")
+    const responseJson = await response.json();
 
-    if (responseJson.error) {
-        return { error: responseJson.message, image: null }
+    if (responseJson === null) {
+        return { error: true, data: null }
     }
-    return { error: false, image: BASE_URL + "/images/small/" + id }
+    return { error: false, data: responseJson }
 }
 
-export { getRestaurants, getSmallImageRestaurant, getDetailRestaurant }
+export { getRestaurants, getRestaurantReview, getDetailRestaurant }
 
