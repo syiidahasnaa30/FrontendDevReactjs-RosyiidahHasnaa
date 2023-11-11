@@ -1,0 +1,119 @@
+:root {
+    --primary-100: #0077C2;
+    --primary-200: #59a5f5;
+    --primary-300: #c8ffff;
+    --accent-100: #00BFFF;
+    --accent-200: #00619a;
+    --text-100: #333333;
+    --text-200: #5c5c5c;
+    --bg-100: #FFFFFF;
+    --bg-200: #f5f5f5;
+    --bg-300: #cccccc;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+body {
+    top: 0;
+    background-color: var(--bg-200);
+}
+
+header,
+main {
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 30px;
+}
+
+header h1 {
+    color: var(--text-100);
+}
+
+header p {
+    color: var(--text-200);
+}
+
+.main-content__action {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+.main-content__action button {
+    border-color: var(--accent-200);
+    min-width: 250px;
+    min-height: 44px;
+}
+
+.restaurant-list {
+    color: var(--text-100);
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.restaurant-item {
+    margin: 16px;
+}
+
+.restaurant-item img {
+    width: 100%;
+}
+
+.restaurant-item button {
+    background-color: var(--accent-200);
+    border-color: var(--accent-200);
+    color: var(--bg-100);
+    border-radius: 2px;
+    padding: 5px;
+    min-height: 44px;
+    width: 100%;
+}
+
+.restaurant-item__description {
+    height: 150px;
+}
+
+.restaurant-item__rate {
+    color: var(--accent-200);
+}
+
+.restaurant-item__information {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.restaurant-item__category,
+.restaurant-item__price,
+.restaurant-item__open {
+    color: var(--text-200);
+    font-size: 14px;
+}
+
+.restaurant-item__open {
+    text-align: end;
+}
+
+@media screen and (min-width: 650px) {
+    .restaurant-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 850px) {
+
+    header,
+    main {
+        padding-left: 80px;
+        padding-right: 80px;
+        padding-top: 30px;
+    }
+
+    .restaurant-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .restaurant-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
