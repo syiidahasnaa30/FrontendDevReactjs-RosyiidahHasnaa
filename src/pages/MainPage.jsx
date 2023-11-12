@@ -3,15 +3,21 @@ import Navbar from "../components/Navbar"
 import RestaurantList from "../components/RestaurantList"
 import { getRestaurants } from "../utils/api"
 import { getFilteredResto } from "../utils/filterUtility"
+import { Hidden } from "@mui/material"
 
 const MainPage = () => {
     const [restaurants, setRestaurants] = useState([])
     const [filterParameter, setFilterParameter] = useState({})
+    const [load, setLoad] = useState(8)
 
     function getFilterParameter({ open, price, category }) {
         setFilterParameter({
             open, price, category
         })
+
+        if (open === false && price === "" && category === "") {
+            setLoad(8)
+        }
     }
 
     React.useEffect(() => {
@@ -21,9 +27,22 @@ const MainPage = () => {
         }
         getData()
     }, [])
-
     const filteredResto = getFilteredResto({ filterParameter, restaurants });
+    const loadedResto = filteredResto.slice(0, load)
 
+    const handleLoadMore = () => {
+        const iteration = 8;
+        if (load < filteredResto.length) {
+            if (load + iteration < filteredResto.length) {
+                const prevLoad = load;
+                setLoad(prevLoad + iteration)
+
+            } else { setLoad(filteredResto.length); }
+        } else {
+            setLoad(filteredResto.length)
+        }
+    }
+    console.log("load saat ini : " + load)
     return <>
         <header>
             <h1>Restaurants</h1>
@@ -31,9 +50,9 @@ const MainPage = () => {
         </header>
         <Navbar getFilterParameter={getFilterParameter} />
         <main className="main-content">
-            <RestaurantList restaurants={filteredResto} />
+            <RestaurantList restaurants={loadedResto} />
             <div className="main-content__action">
-                <button>LOAD MORE</button>
+                <button onClick={handleLoadMore} hidden={load == filteredResto.length ? true : false}>LOAD MORE</button>
             </div>
         </main>
     </>
