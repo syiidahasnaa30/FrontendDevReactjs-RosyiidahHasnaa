@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getDetailRestaurant, getRestaurantReview } from "../utils/api"
-import { Avatar, Rating } from "@mui/material"
+import { Avatar, Box, Card, CardContent, CardHeader, Rating, Typography } from "@mui/material"
 import { GoHomeFill } from "react-icons/go"
+import { showFormattedDate } from "../utils/formattedDate"
 
 const DetailPage = () => {
     const { id } = useParams()
@@ -27,26 +28,45 @@ const DetailPage = () => {
 
     console.log("id=" + id)
     return (
-        <>
-            <div><Link to="/"><GoHomeFill /></Link></div>
-            <h1>{restaurant.name}</h1>
-            <Rating name="half-rating-read" value={(restaurant.rate / 10) * 5} precision={0.5} readOnly />
-            {
-                reviews.map((review) => (
-                    <div key={review.id}>
-                        <Avatar src={review.avatar} alt={review.name} />
-                        <p>{review.name}</p>
-                        <Rating value={(review.rate / 10) * 5} />
-                        <div>
-                            <p>{review.text}</p>
-                        </div>
+        <div className="detail-page">
+            <div><Link to="/"><button className="buttonAction"><GoHomeFill className="buttonAction" /></button></Link> Back to home page</div>
+            <div className="detail-page__header">
+                <h1>{restaurant.name}</h1>
+                <Rating name="half-rating-read" value={(restaurant.rate / 10) * 5} precision={0.5} readOnly />
+            </div>
+            <h3>Reviews</h3>
+            <div className="detaiil-page__rating__content">
+                {
+                    reviews.map((review) => (
+                        <Card key={review.id} sx={{ margin: "16px", maxWidth: "100%" }}>
+                            <CardHeader
+                                avatar={
+                                    <Avatar src={review.avatar} alt={review.name} />
+                                }
+                                title={review.name}
+                                subheader={showFormattedDate(review.createdAt, 'en')}
+                            />
+                            <CardContent>
+                                <Box
+                                    sx={{
+                                        width: 200,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <Rating sx={{ fontSize: "20px" }} name="half-rating-read" value={(review.rate / 10) * 5} precision={0.5} readOnly />
+                                    <Box sx={{ ml: "1px", fontSize: "15px" }}>({(review.rate / 10 * 5)})</Box></Box>
+                                <br />
+                                <Typography variant="body2" color="text.secondary">
+                                    {review.text}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    ))
+                }
+            </div>
 
-
-                    </div>
-                ))
-            }
-
-        </>
+        </div >
     )
 }
 

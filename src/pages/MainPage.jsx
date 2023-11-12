@@ -3,7 +3,6 @@ import Navbar from "../components/Navbar"
 import RestaurantList from "../components/RestaurantList"
 import { getRestaurants } from "../utils/api"
 import { getFilteredResto } from "../utils/filterUtility"
-import { Hidden } from "@mui/material"
 
 const MainPage = () => {
     const [restaurants, setRestaurants] = useState([])

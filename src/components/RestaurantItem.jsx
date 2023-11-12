@@ -1,4 +1,5 @@
 import { Rating } from "@mui/material";
+import { PropTypes } from "prop-types";
 import { GoDotFill } from "react-icons/go"
 import { Link } from "react-router-dom";
 
@@ -21,4 +22,13 @@ const RestaurantItem = ({ id, name, image, rate, category, open, price }) => {
         </div></>
 }
 
+RestaurantItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    rate: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    open: PropTypes.bool.isRequired,
+    price: PropTypes.string.isRequired,
+}
 export default RestaurantItem

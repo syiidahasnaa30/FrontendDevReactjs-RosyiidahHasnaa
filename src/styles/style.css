@@ -18,6 +18,7 @@ body {
 }
 
 header,
+.detail-page,
 main {
     padding-left: 50px;
     padding-right: 50px;
@@ -126,6 +127,24 @@ select {
     text-align: end;
 }
 
+.detail-page__header {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.detaiil-page__rating__content {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.buttonAction {
+    min-width: 44px;
+    min-width: 44px;
+    font-size: 25px;
+    border: none;
+    background-color: var(--bg-200);
+}
+
 @media screen and (min-width: 650px) {
     .restaurant-list {
         grid-template-columns: repeat(2, 1fr);
@@ -135,7 +154,8 @@ select {
 @media screen and (min-width: 850px) {
 
     header,
-    main {
+    main,
+    .detail-page {
         padding-left: 80px;
         padding-right: 80px;
         padding-top: 30px;
@@ -155,10 +175,18 @@ select {
     .restaurant-list {
         grid-template-columns: repeat(3, 1fr);
     }
+
+    .detaiil-page__rating__content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media screen and (min-width: 1200px) {
     .restaurant-list {
         grid-template-columns: repeat(4, 1fr);
+    }
+
+    .detaiil-page__rating__content {
+        grid-template-columns: repeat(3, 1fr);
     }
 }

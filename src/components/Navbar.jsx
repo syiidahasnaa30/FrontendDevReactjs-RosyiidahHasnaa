@@ -1,6 +1,7 @@
 import { FormControl, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select } from "@mui/material"
 import { useEffect, useState } from "react"
 import { getRestaurantCategory } from "../utils/api"
+import { PropTypes } from "prop-types"
 
 
 const Navbar = ({ getFilterParameter }) => {
@@ -46,7 +47,7 @@ const Navbar = ({ getFilterParameter }) => {
             <nav className="navbar">
                 <div className="navbar__filter">
                     <div>
-                        <p>Filtered By :</p>
+                        <p>Filter By :</p>
                         <FormControl>
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
@@ -99,4 +100,7 @@ const Navbar = ({ getFilterParameter }) => {
     )
 }
 
+Navbar.propTypes = {
+    getFilterParameter: PropTypes.func.isRequired
+}
 export default Navbar

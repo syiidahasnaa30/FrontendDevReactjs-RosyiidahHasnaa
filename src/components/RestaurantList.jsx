@@ -1,3 +1,4 @@
+import { PropTypes } from "prop-types"
 import RestaurantItem from "./RestaurantItem"
 
 
@@ -15,5 +16,8 @@ const RestaurantList = ({ restaurants }) => {
             </div>
         </>
     )
+}
+RestaurantList.propTypes = {
+    restaurants: PropTypes.array.isRequired
 }
 export default RestaurantList
