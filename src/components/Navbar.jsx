@@ -42,13 +42,16 @@ const Navbar = ({ getFilterParameter }) => {
         getFilterParameter({ open, price: priceRange, category })
     }, [priceRange, category, open])
     return (
-        <>
+        <div className="navbar__section">
             <hr />
             <nav className="navbar">
                 <div className="navbar__filter">
-                    <div>
-                        <p>Filter By :</p>
+                    <div className="navbar__filter__header">
+                        <p >Filter By: </p>
+                    </div>
+                    <div className="navbar__filter__content">
                         <FormControl>
+
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
                                 defaultValue="female"
@@ -95,8 +98,9 @@ const Navbar = ({ getFilterParameter }) => {
                     <button onClick={handleReset}>Clear All</button>
                 </div>
 
-            </nav>
-            <hr /></>
+            </nav >
+            <hr />
+        </div>
     )
 }
 

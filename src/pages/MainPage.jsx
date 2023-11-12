@@ -3,11 +3,14 @@ import Navbar from "../components/Navbar"
 import RestaurantList from "../components/RestaurantList"
 import { getRestaurants } from "../utils/api"
 import { getFilteredResto } from "../utils/filterUtility"
+import LoadingPage from "../components/LoadingPage"
+import { FaCopyright } from "react-icons/fa"
 
 const MainPage = () => {
     const [restaurants, setRestaurants] = useState([])
     const [filterParameter, setFilterParameter] = useState({})
     const [load, setLoad] = useState(8)
+    const [loading, setLoading] = useState(true)
 
     function getFilterParameter({ open, price, category }) {
         setFilterParameter({
@@ -25,6 +28,7 @@ const MainPage = () => {
             setRestaurants(data)
         }
         getData()
+        setLoading(false)
     }, [])
     const filteredResto = getFilteredResto({ filterParameter, restaurants });
     const loadedResto = filteredResto.slice(0, load)
@@ -43,6 +47,14 @@ const MainPage = () => {
     }
     console.log("load saat ini : " + load)
     return <>
+        {loading && <>
+            <header>
+                <h1>Restaurants</h1>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti ipsum officiis porro praesentium voluptatem, at vero! Culpa exercitationem iure, quisquam expedita esse id delectus blanditiis praesentium eaque deserunt porro! Aut, qui ipsa!</p>
+            </header>
+            <Navbar getFilterParameter={getFilterParameter} />
+            <LoadingPage />
+        </>}
         <header>
             <h1>Restaurants</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti ipsum officiis porro praesentium voluptatem, at vero! Culpa exercitationem iure, quisquam expedita esse id delectus blanditiis praesentium eaque deserunt porro! Aut, qui ipsa!</p>
@@ -54,6 +66,9 @@ const MainPage = () => {
                 <button onClick={handleLoadMore} hidden={load == filteredResto.length ? true : false}>LOAD MORE</button>
             </div>
         </main>
+        <footer>
+            <p><FaCopyright />2023 Rosyiidah Hasnaa</p>
+        </footer>
     </>
 
 }

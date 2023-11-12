@@ -26,7 +26,7 @@ main {
 }
 
 header {
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 
 header h1 {
@@ -37,14 +37,21 @@ header p {
     color: var(--text-200);
 }
 
+.navbar__section {
+    position: sticky;
+    top: 0px;
+    background: var(--bg-200);
+}
+
 .navbar {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 10px 50px 10px 50px;
 }
 
-.navbar__button {
-    text-align: end;
+.navbar__filter__content {
+    display: flex;
+    flex-direction: column;
 }
 
 .navbar__button {
@@ -145,6 +152,18 @@ select {
     background-color: var(--bg-200);
 }
 
+
+
+footer {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.page-notfound {
+    text-align: center;
+}
+
 @media screen and (min-width: 650px) {
     .restaurant-list {
         grid-template-columns: repeat(2, 1fr);
@@ -179,6 +198,10 @@ select {
     .detaiil-page__rating__content {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .navbar__filter__header {
+        margin-right: 30px;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -188,5 +211,15 @@ select {
 
     .detaiil-page__rating__content {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .navbar__filter {
+        display: flex;
+    }
+
+
+    .navbar__filter__content {
+        display: flex;
+        flex-direction: row;
     }
 }
