@@ -3,7 +3,6 @@ import { GoDotFill } from "react-icons/go"
 import { Link } from "react-router-dom";
 
 const RestaurantItem = ({ id, name, image, rate, category, open, price }) => {
-
     return <>
         <div className="restaurant-item">
             <img src={image} alt="image" />
@@ -21,4 +20,5 @@ const RestaurantItem = ({ id, name, image, rate, category, open, price }) => {
             </Link>
         </div></>
 }
+
 export default RestaurantItem

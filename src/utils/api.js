@@ -28,5 +28,16 @@ const getRestaurantReview = async (id) => {
     return { error: false, data: responseJson }
 }
 
-export { getRestaurants, getRestaurantReview, getDetailRestaurant }
+const getRestaurantCategory = async () => {
+    const categories = [];
+    const { data } = await getRestaurants();
+    data.forEach(restaurant => {
+        categories.push(restaurant.category);
+    });
+
+    const uniqueCategory = [...new Set(categories)];
+    // console.log(uniqueCategory)
+    return uniqueCategory
+}
+export { getRestaurants, getRestaurantReview, getDetailRestaurant, getRestaurantCategory }
 

@@ -24,12 +24,35 @@ main {
     padding-top: 30px;
 }
 
+header {
+    padding-bottom: 20px;
+}
+
 header h1 {
     color: var(--text-100);
 }
 
 header p {
     color: var(--text-200);
+}
+
+.navbar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 10px 50px 10px 50px;
+}
+
+.navbar__button {
+    text-align: end;
+}
+
+.navbar__button {
+    text-align: end;
+}
+
+.navbar__button button {
+    min-height: 44px;
+    width: 120px;
 }
 
 .main-content__action {
@@ -90,6 +113,15 @@ header p {
     font-size: 14px;
 }
 
+
+
+option,
+button,
+select {
+    min-width: 44px;
+    min-height: 44px;
+}
+
 .restaurant-item__open {
     text-align: end;
 }
@@ -107,6 +139,17 @@ header p {
         padding-left: 80px;
         padding-right: 80px;
         padding-top: 30px;
+    }
+
+    form {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+    }
+
+    .navbar {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px 80px 10px 80px;
     }
 
     .restaurant-list {
